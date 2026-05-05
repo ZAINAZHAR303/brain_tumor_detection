@@ -7,4 +7,5 @@ pillow
 numpy
 opencv-python-headless
 httpx
+torchvision
 python-dotenv
