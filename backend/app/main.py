@@ -1,4 +1,6 @@
 from io import BytesIO
+import os
+from dotenv import load_dotenv
 
 import cv2
 import httpx
@@ -11,11 +13,13 @@ from pydantic import BaseModel
 from transformers import AutoImageProcessor, AutoModelForImageClassification
 
 
+load_dotenv()
+
 MODEL_NAME = "prithivMLmods/BrainTumor-Classification-Mini"
 
-LONGCAT_API_KEY = "ak_2Qd1zB7Mf3fn7wL5c01Bw9lK4hj8B"
-LONGCAT_API_URL = "https://api.longcat.chat/openai/v1/chat/completions"
-LONGCAT_MODEL = "LongCat-Flash-Chat"
+LONGCAT_API_KEY = os.getenv("LONGCAT_API_KEY", "")
+LONGCAT_API_URL = os.getenv("LONGCAT_API_URL", "https://api.longcat.chat/openai/v1/chat/completions")
+LONGCAT_MODEL = os.getenv("LONGCAT_MODEL", "LongCat-Flash-Chat")
 
 MEDICAL_SYSTEM_PROMPT = (
     "You are a highly knowledgeable medical AI assistant specializing in neurology, "
